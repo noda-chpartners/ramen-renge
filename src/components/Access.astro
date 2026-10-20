@@ -1,0 +1,27 @@
+---
+import { site } from "../data/site";
+
+const mapQuery = encodeURIComponent(site.address);
+const mapEmbed = `https://maps.google.com/maps?q=${mapQuery}&hl=ja&z=16&output=embed`;
+const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+---
+
+<section class="visit" id="access">
+	<div class="visit__copy">
+		<p class="visit__walk">徒歩<br />1分</p>
+		<p class="visit__station">飯能駅から。</p>
+		<address>
+			{site.postal}<br />
+			{site.address}
+		</address>
+		<p class="visit__hours">{site.hours}　定休 {site.closed}</p>
+		<p class="visit__pay">{site.payment}</p>
+		<p class="visit__links">
+			<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+			<a href={mapLink} target="_blank" rel="noopener noreferrer">地図を開く</a>
+		</p>
+	</div>
+	<div class="visit__map">
+		<iframe title="ラーメン居酒屋 蓮華の地図" src={mapEmbed} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+</section>

@@ -1,0 +1,14 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="foot">
+	<p>{site.name}</p>
+	<p>
+		{site.address}　
+		<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+		　
+		<a href={site.instagram} target="_blank" rel="noopener noreferrer">{site.instagramHandle}</a>
+	</p>
+	<p>© {new Date().getFullYear()}</p>
+</footer>

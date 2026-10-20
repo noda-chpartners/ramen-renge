@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import ramen from "../assets/line_oa_chat_261019_162318.jpg";
+import iwashi from "../assets/line_oa_chat_261019_162320.jpg";
+import dashimaki from "../assets/line_oa_chat_261019_162330.jpg";
+import { featured, yen } from "../data/menu";
+
+const photos = { ramen, iwashi, dashimaki };
+---
+
+<section class="counter" id="featured">
+	<h2 class="counter__title">五品、カウンターへ。</h2>
+	<div class="counter__viewport">
+		<div class="counter__row" data-counter-row>
+			{
+				featured.map((item) => {
+					const photo = item.image ? photos[item.image] : null;
+					return (
+						<article class:list={["plate", { "plate--type": !photo }]}>
+							{photo && (
+								<div class="plate__photo">
+									<Image src={photo} alt={item.name} />
+								</div>
+							)}
+							<div class="plate__meta">
+								<h3>{item.name}</h3>
+								<p class="plate__price">{yen(item.price)}</p>
+								<p>{item.text}</p>
+							</div>
+						</article>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>

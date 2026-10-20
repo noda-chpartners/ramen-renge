@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import poster from "../assets/line_oa_chat_261019_162322.jpg";
+import { site } from "../data/site";
+---
+
+<section class="upstairs" id="fleurir">
+	<div class="upstairs__copy">
+		<p class="upstairs__floor">2<small>階</small></p>
+		<h2>{site.fleurirName}</h2>
+		<p>同じ建物の階段を上がると、ちょい呑みの別の店です。</p>
+		<a href={site.fleurirUrl} target="_blank" rel="noopener noreferrer">{site.fleurirName}へ</a>
+	</div>
+	<figure class="upstairs__photo">
+		<Image src={poster} alt="ちょい呑み居酒屋フルリールのローストビーフ" />
+	</figure>
+</section>

@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.jpg";
+import { nav, site } from "../data/site";
+---
+
+<header class="rail" data-header>
+	<div class="rail__bar">
+		<a class="rail__logo" href="#top">
+			<Image src={logo} alt="ラーメン居酒屋 蓮華" />
+		</a>
+		<p class="rail__name">蓮華</p>
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+			<span class="nav-toggle__lines" aria-hidden="true"></span>
+			<span class="visually-hidden" data-nav-label>メニューを開く</span>
+		</button>
+	</div>
+	<nav id="site-nav" class="rail__nav" data-nav>
+		{
+			nav.map((item) => (
+				<a href={item.href}>{item.label}</a>
+			))
+		}
+		<a href={site.fleurirUrl} target="_blank" rel="noopener noreferrer">2階</a>
+		<a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+		<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+	</nav>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+	const nav = document.querySelector<HTMLElement>("[data-nav]");
+	const label = document.querySelector<HTMLElement>("[data-nav-label]");
+
+	const setOpen = (open: boolean) => {
+		toggle?.setAttribute("aria-expanded", String(open));
+		nav?.classList.toggle("is-open", open);
+		if (label) label.textContent = open ? "メニューを閉じる" : "メニューを開く";
+	};
+
+	toggle?.addEventListener("click", () => {
+		setOpen(toggle.getAttribute("aria-expanded") !== "true");
+	});
+
+	nav?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => setOpen(false));
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") setOpen(false);
+	});
+</script>

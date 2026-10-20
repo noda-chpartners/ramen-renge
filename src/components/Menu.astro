@@ -1,0 +1,46 @@
+---
+import { menuPanels, yen, type MenuItem } from "../data/menu";
+
+const priceOf = (item: MenuItem) => yen(item.price, item.suffix ?? "");
+---
+
+<section class="menu" id="menu">
+	<h2>紙のメニュー</h2>
+	<div class="slip">
+		<input class="visually-hidden" type="radio" name="menu-panel" id="menu-food" checked />
+		<input class="visually-hidden" type="radio" name="menu-panel" id="menu-drink" />
+		<div class="slip__index">
+			{
+				menuPanels.map((panel) => (
+					<label for={`menu-${panel.id}`}>{panel.label}</label>
+				))
+			}
+		</div>
+		{
+			menuPanels.map((panel) => (
+				<div class:list={["panel", `panel--${panel.id}`]}>
+					<div class="menu-groups">
+						{panel.groups.map((group) => (
+							<section class="menu-group">
+								<h3>{group.title}</h3>
+								<ul>
+									{group.items.map((item) => (
+										<li class="menu-item">
+											<span class="menu-item__name">
+												{item.name}
+												{item.note && <small>{item.note}</small>}
+											</span>
+											<span class="menu-item__leader" aria-hidden="true" />
+											<span class="menu-item__price">{priceOf(item)}</span>
+										</li>
+									))}
+								</ul>
+							</section>
+						))}
+					</div>
+				</div>
+			))
+		}
+	</div>
+	<p class="menu-note">日本酒・ボトル類は税込です。黒板の品は、その日の表示を見てください。</p>
+</section>
