@@ -10,27 +10,49 @@ interface Props {
 
 const { title = site.name, description = site.description } = Astro.props;
 
+const origin = Astro.site ?? new URL(site.url);
+const canonical = new URL(Astro.url.pathname, origin).href;
+const ogImage = new URL("/ogp.png", origin).href;
+const pageUrl = new URL("/", origin).href;
+
 const jsonLd = {
 	"@context": "https://schema.org",
-	"@type": "Restaurant",
-	name: site.name,
-	description: site.description,
-	servesCuisine: ["ラーメン", "居酒屋"],
-	telephone: "+81429787642",
-	image: "/ogp.png",
-	currenciesAccepted: "JPY",
-	paymentAccepted: site.payment,
-	smokingAllowed: true,
-	acceptsReservations: true,
-	address: {
-		"@type": "PostalAddress",
-		postalCode: "357-0035",
-		addressRegion: "埼玉県",
-		addressLocality: "飯能市",
-		streetAddress: "柳町23-13",
-		addressCountry: "JP",
-	},
-	sameAs: [site.instagram],
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${pageUrl}#website`,
+			url: pageUrl,
+			name: site.name,
+			inLanguage: "ja",
+			description,
+			publisher: { "@id": `${pageUrl}#restaurant` },
+		},
+		{
+			"@type": "Restaurant",
+			"@id": `${pageUrl}#restaurant`,
+			name: site.name,
+			url: pageUrl,
+			image: ogImage,
+			description: site.description,
+			telephone: "+81429787642",
+			servesCuisine: ["ラーメン", "居酒屋"],
+			priceRange: "¥",
+			currenciesAccepted: "JPY",
+			paymentAccepted: "現金, クレジットカード, 電子マネー, PayPay",
+			smokingAllowed: true,
+			acceptsReservations: true,
+			hasMenu: `${pageUrl}#menu`,
+			address: {
+				"@type": "PostalAddress",
+				postalCode: "357-0035",
+				addressRegion: "埼玉県",
+				addressLocality: "飯能市",
+				streetAddress: "柳町23-13",
+				addressCountry: "JP",
+			},
+			sameAs: [site.instagram],
+		},
+	],
 };
 ---
 
@@ -40,13 +62,23 @@ const jsonLd = {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
 		<meta name="theme-color" content="#1a1410" />
+		<link rel="canonical" href={canonical} />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="ja_JP" />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/ogp.png" />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="628" />
+		<meta property="og:image:alt" content={site.name} />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

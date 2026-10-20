@@ -1,7 +1,8 @@
 export const site = {
 	name: "ラーメン居酒屋 蓮華",
+	url: "https://ramen-renge.pages.dev",
 	description:
-		"飯能駅徒歩1分。安くて美味しく、気軽に呑めるラーメン居酒屋です。営業は18:30から。定休日は水曜・日曜。ご予約はお電話で。",
+		"埼玉県飯能市、飯能駅徒歩1分のラーメン居酒屋 蓮華。安くて美味しく、気軽に呑める12席のカウンターです。営業は18:30から。定休日は水曜・日曜。ご予約はお電話で。",
 	phoneDisplay: "0429-78-7642",
 	phoneTel: "0429787642",
 	postal: "〒357-0035",
@@ -17,7 +18,7 @@ export const site = {
 	instagram: "https://www.instagram.com/hannouizakayarenge_y",
 	instagramHandle: "@hannouizakayarenge_y",
 	fleurirName: "Fleurir",
-	fleurirUrl: "https://example.com/fleurir",
+	fleurirUrl: "https://choinomifleurir.owst.jp/",
 	tagline: "安くて美味しく、気軽に呑める。",
 } as const;
 

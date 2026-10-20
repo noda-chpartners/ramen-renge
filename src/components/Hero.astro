@@ -6,7 +6,7 @@ import { site } from "../data/site";
 
 <section class="hero" id="top">
 	<div class="hero__slip">
-		<h1 class="hero__name">蓮華</h1>
+		<h1 class="hero__name"><span class="visually-hidden">ラーメン居酒屋 </span>蓮華</h1>
 		<p class="hero__kind">ラーメン居酒屋</p>
 		<p class="hero__line">{site.tagline}</p>
 		<p class="hero__meta">{site.station}　定休 {site.closed}</p>
@@ -18,11 +18,12 @@ import { site } from "../data/site";
 	<div class="hero__frame">
 		<Image
 			src={hero}
-			alt="木のカウンターに置かれた中華そば"
+			alt="ラーメン居酒屋 蓮華の中華そば"
 			class="hero__photo"
 			widths={[640, 960, 1280]}
 			sizes="(min-width: 960px) 70vw, 100vw"
 			loading="eager"
+			fetchpriority="high"
 		/>
 	</div>
 </section>
