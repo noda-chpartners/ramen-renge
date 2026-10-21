@@ -18,7 +18,7 @@ export const site = {
 	instagram: "https://www.instagram.com/hannouizakayarenge_y",
 	instagramHandle: "@hannouizakayarenge_y",
 	fleurirName: "Fleurir",
-	fleurirUrl: "https://choinomifleurir.owst.jp/",
+	fleurirUrl: "https://fleurir.pages.dev/",
 	tagline: "安くて美味しく、気軽に呑める。",
 } as const;
 

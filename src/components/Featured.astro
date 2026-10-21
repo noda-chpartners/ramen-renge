@@ -18,7 +18,7 @@ const photos = { ramen, iwashi, dashimaki };
 					return (
 						<article class:list={["plate", { "plate--type": !photo }]}>
 							{photo && (
-								<div class="plate__photo">
+								<div class:list={["plate__photo", item.image === "dashimaki" ? "plate__photo--wide" : "plate__photo--portrait"]}>
 									<Image src={photo} alt={item.name} />
 								</div>
 							)}

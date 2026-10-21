@@ -10,12 +10,12 @@ import board from "../assets/menu/line_oa_chat_261019_163102.jpg";
 import wall from "../assets/menu/line_oa_chat_261019_163106.jpg";
 
 const photos = [
-	{ src: ramen, alt: "チャーシューと味玉の中華そば", caption: "中華そば" },
-	{ src: iwashi, alt: "レモンを添えた焼き魚", caption: "いわし" },
-	{ src: salad, alt: "クルトンをのせたサラダ", caption: "サラダ" },
-	{ src: oden, alt: "鍋いっぱいに煮えたおでん", caption: "おでん" },
-	{ src: dashimaki, alt: "切り分けただし巻き玉子", caption: "だし巻き玉子" },
-	{ src: interior, alt: "明るい木のカウンター席", caption: "店内" },
+	{ src: ramen, alt: "チャーシューと味玉の中華そば", caption: "中華そば", frame: "portrait" },
+	{ src: iwashi, alt: "レモンを添えた焼き魚", caption: "いわし", frame: "portrait" },
+	{ src: salad, alt: "クルトンをのせたサラダ", caption: "サラダ", frame: "portrait" },
+	{ src: oden, alt: "鍋いっぱいに煮えたおでん", caption: "おでん", frame: "portrait" },
+	{ src: dashimaki, alt: "切り分けただし巻き玉子", caption: "だし巻き玉子", frame: "wide" },
+	{ src: interior, alt: "明るい木のカウンター席", caption: "店内", frame: "wide" },
 ];
 
 const daily = [
@@ -28,7 +28,7 @@ const daily = [
 	<div class="frames__grid">
 		{
 			photos.map((photo, index) => (
-				<figure class:list={[{ "frames__lead": index === 0 }]}>
+				<figure class:list={["frames__" + photo.frame, { "frames__lead": index === 0 }]}>
 					<Image src={photo.src} alt={photo.alt} />
 					<figcaption>{photo.caption}</figcaption>
 				</figure>
