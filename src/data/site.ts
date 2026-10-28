@@ -12,7 +12,7 @@ export const site = {
 	closed: "水曜日・日曜日",
 	seats: "12席",
 	smoking: "喫煙可能",
-	takeout: "テイクアウトあり（出前館・Uber Eats）",
+	takeout: "テイクアウトあり（店頭でのお持ち帰りのみ）",
 	parking: "駐車場なし（隣がコインパーキング）",
 	payment: "現金・カード・電子マネー・PayPay",
 	instagram: "https://www.instagram.com/hannouizakayarenge_y",

@@ -24,9 +24,9 @@ export const featured = [
 		text: "チャーシュー、味玉、メンマ、海苔。",
 	},
 	{
-		name: "いわし",
-		price: 350,
-		image: "iwashi" as const,
+		name: "サーモンソテー",
+		price: 650,
+		image: "salmon" as const,
 		text: "レモンを添えて。",
 	},
 	{
@@ -37,7 +37,7 @@ export const featured = [
 	},
 	{
 		name: "有頭海老焼き",
-		price: 350,
+		price: 600,
 		image: null,
 		text: "頭付きの海老を一尾。",
 	},
@@ -62,8 +62,8 @@ export const menuPanels: MenuPanel[] = [
 				title: "一押し",
 				items: [
 					{ name: "中華そば", price: 800 },
-					{ name: "いわし", price: 350 },
-					{ name: "有頭海老焼き", price: 350 },
+					{ name: "サーモンソテー", price: 650 },
+					{ name: "有頭海老焼き", price: 600 },
 					{ name: "特製唐揚げ", price: 650 },
 				],
 			},
@@ -76,7 +76,6 @@ export const menuPanels: MenuPanel[] = [
 					{ name: "塩辛", price: 400 },
 					{ name: "枝豆", price: 400 },
 					{ name: "きゅうりの一本漬け", price: 400 },
-					{ name: "キムチ", price: 400 },
 					{ name: "ねぎチャーシュー", price: 450 },
 					{ name: "梅水晶", price: 500 },
 					{ name: "漬物盛り合わせ", price: 600 },
@@ -107,7 +106,7 @@ export const menuPanels: MenuPanel[] = [
 			{
 				title: "めの一品",
 				items: [
-					{ name: "焼きおにぎり（2個）", price: 350 },
+					{ name: "おにぎり（大1個）", price: 350 },
 					{ name: "お茶漬け（梅・しゃけ）", price: 500 },
 					{ name: "チャーハン", price: 700 },
 					{ name: "焼きうどん", price: 700 },
